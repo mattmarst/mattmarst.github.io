@@ -1,7 +1,78 @@
-<HTML>
-    <head></head>
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Activity stopwatch</title>
+        <meta name="viewport" description="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
     <body>
-        <p>Hello world!</p>
-    </body>
+
+        <!-- Slideout menu -->
+        <div id="slideout-menu" class="slideout-menu">
+            <div class="menu-header">
+                <span>Stopwatches</span>
+                <svg id="close-menu-btn">
+                    <path class="close-menu-btn" d="M 0 0 L 10 10 M 0 10 L 10 0" stroke="#000000" stroke-width="2.0" fill="#000000"/>
+                </svg>                
+            </div>
+            <ul id="stopwatch-list"></ul>
+        </div>
+
+
+        <div class="menu-btn-container">
+            <svg class="open-menu-btn" id="open-menu-btn">
+                <path d="M4 18H10" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 12L16 12" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                <path d="M4 6L20 6" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <!-- Stopwatch container -->
+        <div id="container">
+            <button id="create-stopwatch-btn" onclick="openModal()">Click here to create a stopwatch!</button>
+            <div id="stopwatch-container"></div>
+        </div>
+
+        
+
+        <!-- Stopwatch modal -->
+        <div id="create-stopwatch-modal" class="modal">
+            <div class="form-container">
+                <div class="close-button-container">
+                    <div class="x-svg" onclick="closeModal()">
+                        <svg>
+                            <path d="M 0 0 L 10 10 M 0 10 L 10 0" stroke="#000000" stroke-width="1.0" fill="#000000"/>
+                        </svg>
+                    </div>
+                </div>
+                <h2 class="form-title">New Stopwatch</h2>
+                <form>
+                    <label for="task-name" class="form-item">Task: </label><br>
+                    <input type="text" id="task-name" placeholder="Enter task name" required>
     
-</HTML>
+                    <legend class="form-item">Target time limit:
+                        <label for="hours">Hours</label>
+                        <input type="number" id="hours" max="12" min="0" default="0" value="0" required>
+    
+                        <label for="minutes">Minutes</label>
+                        <input type="number" id="minutes" max="59" min="0" default="0" value="0" required>
+    
+                        <label for="seconds">Seconds</label>
+                        <input type="number" id="seconds" max="59" min="0" default="0" value="0"  required>
+    
+                    </legend>
+    
+                    <label for="color" class="form-item">Task color:</label>
+                    <input type="color" class="form-item" value="#34e5eb">
+    
+                    <button type="button" onclick="createStopwatch()">Create</button>
+                    <button id="modal-close-btn" onclick="closeModal()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </body>
+
+    <script src="scripts.js"></script>
+</html>
